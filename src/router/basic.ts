@@ -1,3 +1,4 @@
+// @ts-ignore
 export const routerList = [
   {
     path: "/",
@@ -7,7 +8,7 @@ export const routerList = [
   {
     path: "/login", // 登陆界面
     name: "Login",
-    component: () => import("@/views/AboutView.vue"),
+    component: () => import("@/views/HomeView.vue"),
     meta: { title: "登陆", icon: "Plus", hidden: false },
   },
   {

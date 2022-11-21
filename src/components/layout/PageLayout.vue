@@ -1,40 +1,6 @@
 <template>
-  <el-container class="layout-container-demo">
-    <el-aside width="200px" style="height: 100%">
-      <el-header style="font-size: 12px">
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 60px;
-          "
-        >
-          <div>
-            <span>
-              <!-- <i class="el-icon-platform-eleme logo"></i> -->
-              <img alt="Vue logo" class="logo" src="@/assets/logo.svg" />
-              <span v-show="!isCollapse">通讯录管理</span>
-            </span>
-          </div>
-          <div>
-            <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-              <el-icon
-                v-show="!isCollapse"
-                class="iconBtn expandBtn"
-                @click="isCollapse = true"
-                ><Expand
-              /></el-icon>
-              <el-icon
-                v-show="isCollapse"
-                class="iconBtn shrinkBtn"
-                @click="isCollapse = false"
-                ><Fold
-              /></el-icon>
-            </el-radio-group>
-          </div>
-        </div>
-      </el-header>
+  <el-container class="layout-container">
+    <el-aside width="auto" style="height: 100%">
       <menu-list :menuList="routerList"></menu-list>
     </el-aside>
 
@@ -73,10 +39,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Setting, Fold, Expand } from "@element-plus/icons-vue";
-import { onMounted, ref } from "vue";
+import { Setting } from "@element-plus/icons-vue";
+import { ref } from "vue";
 import MenuList from "@/components/layout/MenuList.vue";
-import router from "@/router";
 import { routerList as list } from "@/router/basic";
 
 const item = {
@@ -85,32 +50,30 @@ const item = {
   address: "No. 189, Grove St, Los Angeles",
 };
 const routerList = list;
-const isCollapse = ref(false);
 const tableData = ref(Array.from({ length: 20 }).fill(item));
-console.log(routerList);
 </script>
 
 <style scoped>
-.layout-container-demo .el-header {
+.layout-container .el-header {
   position: relative;
   background-color: var(--el-color-primary-light-7);
   color: var(--el-text-color-primary);
 }
 
-.layout-container-demo .el-aside {
+.layout-container .el-aside {
   color: var(--el-text-color-primary);
   background: var(--el-color-primary-light-8);
 }
 
-.layout-container-demo .el-menu {
+.layout-container .el-menu {
   border-right: none;
 }
 
-.layout-container-demo .el-main {
+.layout-container .el-main {
   padding: 0;
 }
 
-.layout-container-demo .toolbar {
+.layout-container .toolbar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,6 +87,7 @@ console.log(routerList);
   display: inline-block;
   margin: 0 auto;
 }
+
 .iconBtn {
   font-size: 18px;
 }
